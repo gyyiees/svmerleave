@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Svmerleave — Classic Cultured</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky:#8ec5e8; --sky-deep:#3f86b5; --bg:#f4f6f8; --panel:#ffffff; --ink:#22272e; --muted:#6a707a; --line:#d9dde2; --hero:#dcecf7;
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif; --sans:'Karla',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sky:#7fb6da;--sky-deep:#9fd0ee;--bg:#1b1f24;--panel:#242a31;--ink:#e8ebee;--muted:#a0a7b0;--line:#363d46;--hero:#232d37}}
+:root[data-theme="dark"]{--sky:#7fb6da;--sky-deep:#9fd0ee;--bg:#1b1f24;--panel:#242a31;--ink:#e8ebee;--muted:#a0a7b0;--line:#363d46;--hero:#232d37}
+html{scroll-padding-top:calc(64px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*,*:before,*:after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--sans)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sky-deep);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:12px}
+.logo{font:700 24px var(--serif);text-decoration:none;letter-spacing:.02em}
+nav{display:flex;gap:18px;overflow-x:auto}
+nav a{text-decoration:none;color:var(--muted);font-weight:500;font-size:15px;white-space:nowrap;padding:6px 0}
+nav a:hover{color:var(--ink)}
+.hero{background:var(--hero);border-bottom:1px solid var(--line)}
+.hero .wrap{padding-top:72px;padding-bottom:72px}
+.hero h1{font:600 clamp(52px,12vw,128px)/.95 var(--serif);margin:0 0 18px;letter-spacing:-.01em}
+.hero p{max-width:34ch;font:500 clamp(20px,3vw,26px)/1.35 var(--serif);margin:0 0 28px;color:var(--muted)}
+.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:12px 22px;border-radius:2px;text-decoration:none;font-weight:700;border:0;font-family:inherit;font-size:16px;cursor:pointer}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--ink);margin-left:8px}
+section{padding:64px 0}
+h2{font:600 clamp(32px,5vw,46px)/1.1 var(--serif);margin:0 0 20px}
+.cols{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start}
+.facts{background:var(--panel);border:1px solid var(--line);padding:22px;border-radius:4px}
+.facts dt{font-weight:700;font-size:14px;color:var(--muted)}
+.facts dd{margin:0 0 14px;font:600 22px var(--serif)}
+.facts dd:last-child{margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:4px;overflow:hidden;text-align:left;display:flex;flex-direction:column;justify-content:flex-start;padding:0;cursor:pointer;font:inherit;color:inherit}
+.card:hover{border-color:var(--sky-deep)}
+.thumb{position:relative;width:100%;flex:none;aspect-ratio:4/5;display:grid;place-items:center;background:var(--tint,var(--hero))}
+.thumb svg{width:55%;fill:var(--ink);opacity:.82}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.card .meta{padding:14px 16px 18px}
+.card h3{margin:0;font:600 22px var(--serif)}
+.card p{margin:2px 0 0;color:var(--muted);font-size:15px}
+dialog{border:1px solid var(--line);border-radius:4px;padding:0;max-width:min(560px,92vw);width:100%;background:var(--panel);color:var(--ink)}
+dialog::backdrop{background:rgba(20,24,28,.55)}
+.dlg{padding:26px}
+.dlg h3{font:600 32px var(--serif);margin:0 0 6px}
+table{width:100%;border-collapse:collapse;margin:14px 0 18px;font-size:15px}
+.scroll{overflow-x:auto}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
+th{color:var(--muted);font-weight:700}
+.hours{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:6px 20px}
+.hours div{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}
+.hours div:last-child{border:0}
+.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.links a{border:1.5px solid var(--ink);padding:10px 18px;border-radius:2px;text-decoration:none;font-weight:700}
+.links a:hover{background:var(--sky);color:#14202a;border-color:var(--sky)}
+.note{font-size:14px;color:var(--muted);margin-top:14px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:15px}
+@media (max-width:720px){.cols{grid-template-columns:1fr}.hero .wrap{padding-top:48px;padding-bottom:48px}section{padding:48px 0}header .wrap{height:auto;padding-top:8px;padding-bottom:8px;flex-direction:column;align-items:flex-start;gap:2px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#top">Svmerleave</a>
+  <nav aria-label="Menu utama"><a href="#profil">Profil</a><a href="#produk">Produk</a><a href="#toko">Toko</a><a href="#kontak">Kontak</a></nav>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+  <h1>Svmerleave</h1>
+  <p>Brand desain dengan karakter classic cultured, dibuat sejak 2020.</p>
+</div></div>
+
+<section id="profil"><div class="wrap cols">
+  <div>
+    <h2>Tentang Svmerleave</h2>
+    <p>Svmerleave berdiri pada 10 Desember 2020, di masa peralihan menuju new normal dan pemulihan ekonomi. Sang owner gemar mendesain dan sudah lama mengerjakan proyek untuk orang lain, lalu memutuskan membangun brand sendiri.</p>
+    <p>Hasilnya adalah identitas classic cultured: desain yang tenang, klasik, dan tetap terasa dekat dengan anak muda yang menyukai industri kreatif.</p>
+  </div>
+  <dl class="facts">
+    <dt>Berdiri</dt><dd>10 Desember 2020</dd>
+    <dt>Identitas</dt><dd>Classic cultured</dd>
+    <dt>Untuk</dt><dd>Anak muda pecinta industri kreatif</dd>
+  </dl>
+</div></section>
+
+<section id="produk" style="background:var(--panel);border-block:1px solid var(--line)"><div class="wrap">
+  <h2>Produk</h2>
+  <p style="max-width:52ch;color:var(--muted)">Pilih produk untuk melihat ukurannya, jadi tidak perlu bertanya lagi lewat DM.</p>
+  <div class="grid" id="katalog" aria-live="polite"></div>
+</div></section>
+
+<section id="toko"><div class="wrap cols">
+  <div>
+    <h2>Toko</h2>
+    <p id="toko-nama" style="font:600 24px var(--serif);margin:0 0 4px"></p>
+    <p id="toko-alamat" style="margin:0"></p>
+  </div>
+  <div>
+    <h3 style="font:600 24px var(--serif);margin:0 0 10px">Jam operasional</h3>
+    <div class="hours" id="jam"></div>
+  </div>
+</div></section>
+
+<section id="kontak" style="background:var(--hero);border-top:1px solid var(--line)"><div class="wrap">
+  <h2>Hubungi dan ikuti kami</h2>
+  <p style="max-width:48ch">Pertanyaan soal produk atau toko? Kirim pesan lewat salah satu kanal berikut.</p>
+  <div class="links" id="medsos"></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">© 2026 Svmerleave. Web profile dibuat oleh Kelompok 2, Rekayasa Perangkat Lunak, UHN I Gusti Bagus Sugriwa Denpasar.</div></footer>
+
+<dialog id="dlg" aria-labelledby="dlg-judul"><div class="dlg">
+  <h3 id="dlg-judul"></h3>
+  <p id="dlg-desain" style="margin:0;color:var(--muted)"></p>
+  <div class="scroll"><table><thead><tr><th>Ukuran</th><th>Lebar dada (cm)</th><th>Panjang (cm)</th></tr></thead><tbody id="dlg-ukuran"></tbody></table></div>
+  <button class="btn" id="dlg-tutup" type="button">Tutup</button>
+</div></dialog>
+
+<script>
+var DATA_SVMERLEAVE = {
+  produk: [
+    {nama:"Koleksi Kaos Svmerleave", desain:"Kaos hitam dan putih dengan beberapa desain: ilustrasi garis merah-biru, monogram SMR, dan badge matahari.", warna:"#eceff2", foto:"foto/koleksi.jpg", fit:"contain",
+     ukuran:[["S",50,68],["M",52,70],["L",54,72],["XL",56,74]]},
+    {nama:"Kaos SMR Monogram", desain:"Kaos hitam dengan logo monogram SMR oranye di dada tengah.", warna:"#e6e3dc", foto:"foto/kaos-smr-monogram.jpg",
+     ukuran:[["S",50,68],["M",52,70],["L",54,72],["XL",56,74]]},
+    {nama:"Kaos Sun Badge", desain:"Kaos hitam dengan badge matahari biru bertuliskan Svmer Leave di dada.", warna:"#cfe6f5", foto:"foto/kaos-sun-badge.jpg",
+     ukuran:[["S",50,68],["M",52,70],["L",54,72],["XL",56,74]]},
+    {nama:"Polo Pocket", desain:"Polo putih dengan saku dada, label kecil Svmer Leave, dan list hitam di ujung lengan.", warna:"#e3e5e8", foto:"foto/polo-pocket.jpg",
+     ukuran:[["S",49,67],["M",51,69],["L",53,71],["XL",55,73]]}
+  ],
+  toko: {nama:"Svmerleave Store", alamat:"House Of Svmerleave.co, Karangasem, Bali",
+    jam:[["Senin – Jumat","10.00 – 20.00"],["Sabtu","10.00 – 21.00"],["Minggu","Tutup"]]},
+  medsos: [
+    {label:"Instagram", url:"https://www.instagram.com/smrleave.co?utm_source=ig_web_button_share_sheet&mdxt=ZDNlZDc0MzIxNw=="},
+    {label:"Facebook", url:"https://www.facebook.com/share/1MGqqnDMJY/"},
+  ]
+};
+</script>
+<script>
+(function(){
+  var D = DATA_SVMERLEAVE, $ = function(id){return document.getElementById(id)};
+  var shirt = '<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M22 6 8 14l5 14 7-3v33h24V25l7 3 5-14-14-8c-1 5-5 8-10 8s-9-3-10-8z"/></svg>';
+  var kat = $('katalog'), dlg = $('dlg');
+  D.produk.forEach(function(p,i){
+    var b = document.createElement('button');
+    b.className='card'; b.type='button';
+    b.innerHTML = '<div class="thumb" style="--tint:'+p.warna+'">'+shirt+'</div><div class="meta"><h3>'+p.nama+'</h3><p>Lihat ukuran</p></div>';
+    if(p.foto){
+      var th = b.querySelector('.thumb'), im = new Image();
+      im.alt = p.nama;
+      im.onload = function(){
+        th.innerHTML = '';
+        if(p.fit){ im.style.objectFit = p.fit; th.style.background = '#fff'; }
+        th.appendChild(im);
+      };
+      im.src = p.foto;
+    }
+    b.onclick = function(){
+      $('dlg-judul').textContent = p.nama;
+      $('dlg-desain').textContent = p.desain;
+      $('dlg-ukuran').innerHTML = p.ukuran.map(function(u){return '<tr><td>'+u[0]+'</td><td>'+u[1]+'</td><td>'+u[2]+'</td></tr>'}).join('');
+      dlg.showModal();
+    };
+    kat.appendChild(b);
+  });
+  $('dlg-tutup').onclick = function(){dlg.close()};
+  dlg.addEventListener('click', function(e){ if(e.target===dlg) dlg.close(); });
+  $('toko-nama').textContent = D.toko.nama;
+  $('toko-alamat').textContent = D.toko.alamat;
+  $('jam').innerHTML = D.toko.jam.map(function(j){return '<div><span>'+j[0]+'</span><strong>'+j[1]+'</strong></div>'}).join('');
+  $('medsos').innerHTML = D.medsos.map(function(m){return '<a href="'+m.url+'" target="_blank" rel="noopener">'+m.label+'</a>'}).join('');
+})();
+</script>
+</body>
+</html>
